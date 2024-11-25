@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Formulario de Login -->
+    <form action="login.php" method="POST">
+      <h2>Bienvenido</h2>
+      <div class="input-field">
+        <input type="text" name="email" required>
+        <label>Ingresa tu email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="password" required>
+        <label>Ingresa tu contraseña</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Recordar</p>
+        </label>
+        <a href="#">¿Olvidaste tu contraseña?</a>
+      </div>
+      <button type="submit">Acceder</button>
+      <div class="register">
+        <p>¿No tienes una cuenta?
+          <a href="registro.html">Registrar</a>
+        </p>
+      </div>
+    </form>
+
+  
+  </div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Contenido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto Slab', serif;
+            margin: 0;
+            background: url(https://images.pexels.com/photos/1252636/pexels-photo-1252636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+            color: #c0c5d7;
+        }
+
+        nav {
+            background: rgba(44, 56, 71, 0.8);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .logo h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1, h3 {
+            color: #f3f4f6;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            animation: slideUp 1.2s ease-in-out;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        input, textarea, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(44, 56, 71, 0.8);
+            color: #ffffff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4e89b6;
+            box-shadow: 0 0 8px rgba(78, 137, 182, 0.8);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            cursor: pointer;
+            background: #4e89b6;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+        }
+
+        button:hover {
+            background: #356a8a;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        a button {
+            display: block;
+            margin: auto;
+            background-color: #f3f4f6;
+            color: #2e3b4e;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>Gestión de Contenidos</h1>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Administrador de Contenido</h1>
+        <a href="interfazadmin.html">
+            <button type="button">Ir al Administrador</button>
+        </a>
+
+        <!-- Formulario para crear contenido -->
+        <form id="form-crear">
+            <h3>Crear Nuevo Contenido</h3>
+            <label for="crear-titulo">Título:</label>
+            <input type="text" id="crear-titulo" name="titulo" required>
+
+            <label for="crear-categoria">Categoría:</label>
+            <input type="text" id="crear-categoria" name="categoria" required>
+            
+            <label for="crear-descripcion">Descripción:</label>
+            <textarea id="crear-descripcion" name="descripcion" required></textarea>
+            
+            <label for="crear-imagen">URL de la Imagen:</label>
+            <input type="text" id="crear-imagen" name="imagen" required>
+            
+            <label for="crear-enlace">Enlace:</label>
+            <input type="text" id="crear-enlace" name="enlace" required>
+            
+            <button type="button" onclick="crearContenido()">Crear</button>
+            <div class="result" id="result-crear"></div>
+        </form>
+
+        <!-- Formulario para actualizar contenido -->
+        <form id="form-actualizar">
+            <h3>Actualizar Contenido</h3>
+            <label for="actualizar-id">ID del Contenido:</label>
+            <input type="number" id="actualizar-id" name="id" required>
+            
+            <label for="actualizar-titulo">Título (opcional):</label>
+            <input type="text" id="actualizar-titulo" name="titulo">
+
+            <label for="actualizar-categoria">Categoría (opcional):</label>
+            <input type="text" id="actualizar-categoria" name="categoria">
+            
+            <label for="actualizar-descripcion">Descripción (opcional):</label>
+            <textarea id="actualizar-descripcion" name="descripcion"></textarea>
+            
+            <label for="actualizar-imagen">URL de la Imagen (opcional):</label>
+            <input type="text" id="actualizar-imagen" name="imagen">
+            
+            <label for="actualizar-enlace">Enlace (opcional):</label>
+            <input type="text" id="actualizar-enlace" name="enlace">
+            
+            <button type="button" onclick="actualizarContenido()">Actualizar</button>
+            <div class="result" id="result-actualizar"></div>
+        </form>
+
+        <!-- Formulario para eliminar contenido -->
+        <form id="form-eliminar">
+            <h3>Eliminar Contenido</h3>
+            <label for="eliminar-id">ID del Contenido:</label>
+            <input type="number" id="eliminar-id" name="id" required>
+            
+            <button type="button" onclick="eliminarContenido()">Eliminar</button>
+            <div class="result" id="result-eliminar"></div>
+        </form>
+    </main>
+    <script>
+        const API_URL = "http://localhost/servicio1/contenido"; // URL del servicio
+
+        // Función para crear contenido
+        async function crearContenido() {
+            const data = {
+                titulo: document.getElementById("crear-titulo").value,
+                categoria: document.getElementById("crear-categoria").value,
+                descripcion: document.getElementById("crear-descripcion").value,
+                imagen: document.getElementById("crear-imagen").value,
+                enlace: document.getElementById("crear-enlace").value
+            };
+
+            const result = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json());
+
+            document.getElementById("result-crear").innerText = JSON.stringify(result, null, 2);
+        }
+
+        // Función para actualizar contenido
+        async function actualizarContenido() {
+            const id = document.getElementById("actualizar-id").value;
+            const data = {
+                titulo: document.getElementById("actualizar-titulo").value,
+                categoria: document.getElementById("actualizar-categoria").value,
+                descripcion: document.getElementById("actualizar-descripcion").value,
+                imagen: document.getElementById("actualizar-imagen").value,
+                enlace: document.getElementById("actualizar-enlace").value
+            };
+
+            const result = await fetch(`${API_URL}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json());
+
+            document.getElementById("result-actualizar").innerText = JSON.stringify(result, null, 2);
+        }
+
+        // Función para eliminar contenido
+        async function eliminarContenido() {
+            const id = document.getElementById("eliminar-id").value;
+
+            const result = await fetch(`${API_URL}/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res => res.json());
+
+            document.getElementById("result-eliminar").innerText = JSON.stringify(result, null, 2);
+        }
+    </script>
+</body>
+</html>

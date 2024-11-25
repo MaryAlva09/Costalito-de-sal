@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="panel-title">Panel de control</h1>
+        <div class="button-container">
+            <button class="btn" onclick="navigateTo('content-form')">Formulario de Contenido</button>
+            <button class="btn" onclick="navigateTo('subscription-manager')">Administrador de Suscripciones</button>
+            <button class="btn" onclick="navigateTo('sponsors')">Patrocinadores</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para manejar la navegación
+        function navigateTo(page) {
+            switch (page) {
+                case 'content-form':
+                    window.location.href = '/interfaz2/contenido.html'
+                    break;
+                case 'subscription-manager':
+                    window.location.href = '/interfaz2/su.php';
+                    break;
+                case 'sponsors':
+                    window.location.href = 'C:/xampp/interfaz2/patrocinador.html';
+                    break;
+                default:
+                    alert('Página no encontrada.');
+            }
+        }
+    </script>
+</body>
+</html>
