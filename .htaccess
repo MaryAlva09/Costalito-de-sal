@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Redirigir todas las solicitudes al archivo PHP que ejecuta Slim
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ servicio_contenido.php [QSA,L]
